@@ -3,14 +3,18 @@ var router = express.Router();
 var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/sigma';
 
-router.put('/', function (req, res) {
+router.post('/', function (req, res) {
+  var newPet = req.body;
+  console.log(newPet);
+
   pg.connect(connectionString, function (err, client, done) {
+
     if(err) {
       console.log('Database connection error:', err);
       res.sendStatus(500);
     }
 
-    client.put(
+    client.query(
       'INSERT INTO pets (name, breed, color, owner_id)' +
       ' VALUES ($1, $2, $3, $4)',
       [newPet.name, newPet.breed, newPet.color, newPet.owner_id],
@@ -21,10 +25,12 @@ router.put('/', function (req, res) {
           console.log('insert query error:',err)
           res.sendStatus(500);
         } else {
+          console.log('pet added');
           res.sendStatus(201);
         }
       }
     );
   });
 });
+
 module.exports = router;

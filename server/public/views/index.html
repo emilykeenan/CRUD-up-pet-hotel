@@ -38,8 +38,8 @@
       <h3>Pets</h3>
       <div class="form-group">
         <label for="owner">Owner</label>
-        <select class="form-control" id="owner">
-          <option>Alex Hermundson</option>
+        <select name="owner_id" class="form-control" id="owner">
+          <option value="1">Alex Hermundson</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
@@ -48,16 +48,16 @@
       </div>
       <div class="form-group">
         <label for="petName">Pet Name</label>
-        <input type="text" class="form-control" id="petName">
+        <input type="text" name="name" class="form-control" id="petName">
       </div>
 
       <div class="form-group">
         <label for="breed">Breed</label>
-        <input type="text" class="form-control" id="breed">
+        <input type="text" name="breed" class="form-control" id="breed">
       </div>
       <div class="form-group">
         <label for="color">Color</label>
-        <input type="text" class="form-control" id="color">
+        <input type="text" name="color" class="form-control" id="color">
       </div>
       <button type="submit" class="btn btn-primary" id="addPetButton">Add Pet</button>
     </form>
