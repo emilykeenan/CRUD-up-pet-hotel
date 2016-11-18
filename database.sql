@@ -18,4 +18,3 @@ check_in DATE NOT NULL,
 check_out DATE NOT NULL,
 pet_id INTEGER REFERENCES pets
 );
-asdfafd
