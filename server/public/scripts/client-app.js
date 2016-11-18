@@ -23,7 +23,7 @@ function getPets() {
 
 function appendPets(pets) {
   $('#petsTable').empty();
-  $('#petsTable').append('    <tr id="petTableHead">'
+  $('#petsTable').append('<tr id="petTableHead">' +
       '<th>Owner</th>' +
       '<th>Pet</th>' +
       '<th>Breed</th>' +
@@ -31,18 +31,24 @@ function appendPets(pets) {
       '<th>Update</th>' +
       '<th>Delete</th>' +
       '<th>Check In/Out</th>' +
-    '</tr>')
+    '</tr>');
   for (var i = 0; i < pets.length; i++) {
     var pet = pets[i];
+    if(pet.check_in == null) {
+      var status = 'OUT';
+    } else {
+      var status = 'IN';
+    }
+
     $('#petsTable').append(
-      '<tr>' +
-      '<td>' + pet.first_name + pet.last_name + '</td>' +
+      '<tr data-id="' + pet.pet_id + '">' +
+      '<td>' + pet.first_name + ' ' + pet.last_name + '</td>' + // refers to owner's first and last name
       '<td>' + pet.name + '</td>' +
       '<td>' + pet.breed + '</td>' +
       '<td>' + pet.color + '</td>' +
-      '<td>' + '<button id="updateButton">Go</button>' + '</td>' +
-      '<td>' + '<button id="deleteButton">Delete</button>' + '</td>' +
-      '<td>' + '<button id="checkInOutButton">'+ pet.check_in +'</button>' + '</td>' +
+      '<td>' + '<button class="updateButton">Go</button>' + '</td>' +
+      '<td>' + '<button class="deleteButton">Delete</button>' + '</td>' +
+      '<td>' + '<button class="checkInOutButton">'+ status +'</button>' + '</td>' +
       '</tr>'
     );
 

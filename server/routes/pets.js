@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
       res.sendStatus(500);
     }
 
-    client.query('SELECT * FROM visits JOIN pets ON pets.id = visits.pet_id JOIN owners ON pets.owner_id = owners.id;', function(err, result) {
+    client.query('SELECT * FROM pets LEFT JOIN visits ON pets.id = visits.pet_id LEFT JOIN owners ON pets.owner_id = owners.id;', function(err, result) {
       done(); // close the connection.
 
       console.log('the client!:', client);
