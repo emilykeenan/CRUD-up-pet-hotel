@@ -18,4 +18,15 @@ check_in DATE NOT NULL,
 check_out DATE NOT NULL,
 pet_id INTEGER REFERENCES pets
 );
-asdfafd
+
+-- 3. Joining Owner and Pet
+-- SELECT * FROM owners
+-- JOIN pets ON owners.id = pets.owner_id;
+--
+-- 4.
+-- CREATE TABLE visits (
+-- 	id SERIAL PRIMARY KEY,
+-- 	check_in date,
+-- 	check_out date,
+-- 	pet_id int REFERENCES pets
+-- );
