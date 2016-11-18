@@ -17,7 +17,6 @@ app.get('/', function(req, res){
   res.sendFile(path.resolve('./server/public/views/index.html'));
 });
 
-
 app.use(express.static('./server/public'));
 
 app.set('port', process.env.PORT || 3000);
