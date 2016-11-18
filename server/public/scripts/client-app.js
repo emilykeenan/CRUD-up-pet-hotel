@@ -188,13 +188,15 @@ function addOwnersToSelect() {
 
 
 function checkOut() {
+  var id = $(this).closest('tr').data('id');
   var date = new Date();
   console.log(date.toLocaleDateString());
   $.ajax({
     type: 'PUT',
-    url: '/visits/' + id,
+    url: '/visits/out/' + id,
     data: date.toLocaleDateString(),
     success: function() {
+      console.log("Succefully checked out pet");
       getPets();
     },
     error: function(response) {
