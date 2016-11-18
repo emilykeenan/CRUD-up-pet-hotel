@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 
 function deletePet() {
-  var id = $(this).parent().data('id');
+  var id = $(this).closest('tr').data('id');
   console.log(id);
 
   $.ajax({
@@ -17,7 +17,7 @@ function deletePet() {
       getPets();
     },
     error: function(result) {
-      console.log('could not delete book.');
+      console.log('could not delete pet.');
     }
   });
 }
@@ -54,9 +54,9 @@ function appendPets(pets) {
     } else {
       var status = 'IN';
     }
-
+    console.log(pet);
     $('#petsTable').append(
-      '<tr data-id="' + pet.pet_id + '">' +
+      '<tr data-id="' + pet.unique_pet + '">' +
       '<td>' + pet.first_name + ' ' + pet.last_name + '</td>' + // refers to owner's first and last name
       '<td>' + pet.name + '</td>' +
       '<td>' + pet.breed + '</td>' +

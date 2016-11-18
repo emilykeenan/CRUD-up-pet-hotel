@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
       res.sendStatus(500);
     }
 
-    client.query('SELECT * FROM pets LEFT JOIN visits ON pets.id = visits.pet_id LEFT JOIN owners ON pets.owner_id = owners.id;', function(err, result) {
+    client.query('SELECT pets.id as unique_pet, * FROM pets LEFT JOIN visits ON pets.id = visits.pet_id LEFT JOIN owners ON pets.owner_id = owners.id;', function(err, result) {
       done(); // close the connection.
 
       console.log('the client!:', client);
@@ -38,13 +38,13 @@ router.delete('/:id', function(req, res) {
       res.sendStatus(500);
     }
     client.query(
-      'DELETE FROM visits WHERE pet_id = $2',
+      'DELETE FROM visits WHERE pet_id = $1',
       [petID],
       function(err, result) {
         if(err) {
           res.sendStatus(500);
         } else {
-          res.sendStatus(200);
+          // res.sendStatus(200);
         }
       });
     //delete pet query
