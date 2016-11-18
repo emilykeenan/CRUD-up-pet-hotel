@@ -4,6 +4,7 @@ $(document).ready(function(){
   $("#ownerRegButton").on('click', newOwner)
   $('#petInfoTable').on('click', '.deleteButton', deletePet);
   $('#petInfoTable').on('click', '.updateButton', updatePet);
+  $('#petInfoTable').on('click', '.check-out', checkOut);
   getPets();
   addOwnersToSelect();
 }); // end document ready
@@ -187,5 +188,17 @@ function addOwnersToSelect() {
 
 
 function checkOut() {
-
+  var date = new Date();
+  console.log(date.toLocaleDateString());
+  $.ajax({
+    type: 'PUT',
+    url: '/visits/' + id,
+    data: date.toLocaleDateString(),
+    success: function() {
+      getPets();
+    },
+    error: function(response) {
+      console.log("failed to checkout pet ", response);
+    }
+  })
 }
