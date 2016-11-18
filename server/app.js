@@ -6,6 +6,7 @@ var pets = require('./routes/pets')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// routes
 app.use('/pets', pets);
 
 // Catchall route
