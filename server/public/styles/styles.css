@@ -1,12 +1,105 @@
-h1 {
-  font-family: 'Taviraj', serif;
-  color: indigo;
+.jumbotron h1 {
+  font-family: 'Asap', sans-serif;
+  color: white;
+}
+
+.jumbotron p {
+  font-family: 'Dosis', sans-serif;
+  color: white;
+  margin-left: 20px;
+}
+
+.jumbotron a {
+  font-family: 'Dosis', sans-serif;
+  color: white;
+}
+
+.jumbotron a:hover {
+  font-family: 'Dosis', sans-serif;
+  color: #999999;
+  text-decoration: none;
 }
 
 h2 {
-  color: gray;
+  color: white;
 }
 
-/*#addPetButton {
-  margin-top: 10px;
-}*/
+td, th {
+  padding: 10px;
+  text-align: center;
+}
+
+#petTableHead {
+  border: none;
+}
+
+th {
+  background: #070206;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+th td {
+  border: none;
+}
+
+table {
+  margin: 20px auto 20px auto;
+  width: 100%;
+}
+
+.jumbotron {
+  background: #070206 url('../assets/images/background.jpg') bottom right no-repeat;
+  background-size: 40%;
+  border: 1px solid black;
+}
+
+#ownerRegistration, #petRegistration {
+  background: hsla(0,0%,0%, 0.05);
+  display: block;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  border-bottom: 1px solid hsla(0,0%,0%, 0.1);
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  margin: 5px 3px 3px 3px;
+
+}
+
+#owner {
+  display: block;
+  margin: 5px 3px 3px 3px;
+}
+
+input {
+  display: block;
+  margin: 5px 3px 3px 3px;
+  padding: 3px;
+}
+
+.checkInOutButton, .updateButton, .deleteButton {
+  background: hsla(0,0%,0%, 0.1);
+  color: black;
+  border: 1px solid hsla(0,0%,0%, 0.2);
+}
+
+.checkInOutButton:hover, .updateButton:hover, .deleteButton:hover {
+  background: hsla(0,0%,0%, 0.3);
+  border: 1px solid hsla(0,0%,0%, 0.3);
+}
+
+#addPetButton, #ownerRegButton {
+  display: block;
+  margin: 30px auto 3px auto;
+  background: hsla(312, 55.6%, 1.8%, 0.8);
+  border: 1px solid hsla(312, 55.6%, 1.8%, 1);
+}
+
+#addPetButton:hover, #ownerRegButton:hover {
+  background: hsla(312, 55.6%, 1.8%, 1);
+}
