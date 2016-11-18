@@ -14,8 +14,8 @@ owner_id INTEGER REFERENCES owners
 
 CREATE TABLE visits (
 id SERIAL PRIMARY KEY,
-check_in DATE NOT NULL,
-check_out DATE NOT NULL,
+check_in DATE,
+check_out DATE,
 pet_id INTEGER REFERENCES pets
 );
 asdfafd
