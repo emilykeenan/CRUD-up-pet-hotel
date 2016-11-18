@@ -2,13 +2,20 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
+var owners = require('./routes/owners');
+
+console.log("request");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/owners', owners)
+
 
 // Catchall route
 app.get('/', function(req, res){
   res.sendFile(path.resolve('./server/public/views/index.html'));
 });
+
 
 app.use(express.static('./server/public'));
 
