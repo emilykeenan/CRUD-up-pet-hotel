@@ -1,28 +1,40 @@
-<<<<<<< HEAD
-function updatePet(event) {
-  event.preventDefault;
-  var $button = $(this);
-  var id = $(this).parent().data('id');
-  var ownerName = $button.closest('form').children().children('input[type=text]').val();
-  var petName = $button.closest('form').children().next().children('input[type=text]').val();
-  var petBreed = $button.closest('form').children().next().next().children('input[type=text]').val();
-  var petColor = $button.closest('form').children().next().next().next().children('input[type=text], #petName').val();
-  var petInfo = { id: id, name: petName, breed: petBreed, color: petColor };
-  console.log('formData', petInfo);
-
-  $.ajax({
-    type: 'PUT',
-    url: '/pets/' + id,
-    data: petInfo
-  });
-};
-=======
 $(document).ready(function(){
   console.log('jquery loaded');
   $('#petInfoTable').on('click', '.deleteButton', deletePet);
+  $('#petInfoTable').on('click', '.updateButton', updatePet);
   getPets();
 }); // end document ready
 
+function updatePet(){
+  event.preventDefault;
+  var id= $(this).closest('tr').data('id');
+  console.log("id in update " + id);
+  var pets = {};
+  var fields = $(this).closest('tr').find("input").serializeArray();
+  fields.forEach(function(field){
+      pets[field.name] = field.value;
+    });
+   //console.log($(this).closest('tr').find("input").serializeArray());
+
+  //console.log($(this).parent().siblings());
+
+
+   console.log(pets);
+  $.ajax({
+    type: 'PUT',
+    url: '/pets/' + id,
+    data: pets,
+    success: function(result){
+      // get pets from database and reappend
+      getPets();
+    },
+    error: function(result) {
+      console.log("could not update pet.");
+    }
+  })
+
+
+}
 
 function deletePet() {
   var id = $(this).closest('tr').data('id');
@@ -73,13 +85,15 @@ function appendPets(pets) {
     } else {
       var status = 'IN';
     }
-    console.log(pet);
+    //console.log(pet);
     $('#petsTable').append(
-      '<tr data-id="' + pet.unique_pet + '">' +
-      '<td>' + pet.first_name + ' ' + pet.last_name + '</td>' + // refers to owner's first and last name
-      '<td>' + pet.name + '</td>' +
-      '<td>' + pet.breed + '</td>' +
-      '<td>' + pet.color + '</td>' +
+      '<tr data-id="' + pet.unique_pet + '"data-owner_id= "'+ pet.owner_id + '">' +
+      '<td> <input type="text" name="first_name" value=""' + pet.first_name
+      + '" /><input type="text" name="last_name" value="' + pet.last_name
+      +'"/>' +'</td>' + // refers to owner's first and last name
+      '<td> <input type="text" name="name" value="' + pet.name + '"/></td>' +
+      '<td> <input type="text" name="breed" value="' + pet.breed + '"/></td>' +
+      '<td> <input type="text" name="color" value="' + pet.color + '"/></td>' +
       '<td>' + '<button class="updateButton">Go</button>' + '</td>' +
       '<td>' + '<button class="deleteButton">Delete</button>' + '</td>' +
       '<td>' + '<button class="checkInOutButton">'+ status +'</button>' + '</td>' +
@@ -89,4 +103,3 @@ function appendPets(pets) {
 
   }
 }
->>>>>>> master
