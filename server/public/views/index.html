@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>CRUD Up Pet Hotel</title>
     <script type="text/javascript" src="../vendor/jquery.min.js"></script>
     <script type="text/javascript" src="../scripts/client-app.js"></script>
     <link rel="stylesheet" href="../vendor/bootstrap.min.css" title="no title">
     <link rel="stylesheet" href="../styles/styles.css" title="no title">
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
-      <div class="jumbotron">
-        <h1>Owners and Pets</h1>
-        <p>Go to Visits</p>
-      </div>
+        <div class="jumbotron">
+            <h1>Owners and Pets</h1>
+            <p>Go to Visits</p>
+        </div>
     </div>
+
 <div class="container">
   <div class="row">
     <form class="form-inline col-md-12" id="ownerRegistration">
       <h3>Owner Registration</h3>
       <div class="form-group">
         <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name">
       </div>
       <div class="form-group">
         <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
       </div>
       <button type="submit" id="ownerRegButton" class="btn btn-primary">Register</button>
     </form>
@@ -45,6 +48,7 @@
           <option>4</option>
           <option>5</option>
         </select>
+
       </div>
       <div class="form-group">
         <label for="petName">Pet Name</label>
@@ -53,11 +57,11 @@
 
       <div class="form-group">
         <label for="breed">Breed</label>
-        <input type="text" name="breed" class="form-control" id="breed">
+        <input type="text" class="form-control" name="breed" id="breed">
       </div>
       <div class="form-group">
         <label for="color">Color</label>
-        <input type="text" name="color" class="form-control" id="color">
+        <input type="text" class="form-control" name="color" id="color">
       </div>
       <button type="submit" class="btn btn-primary" id="addPetButton">Add Pet</button>
     </form>
@@ -65,9 +69,10 @@
 </div>
 
 <div class="container">
-  <div class="petInfoTable">
-
-  </div>
+</div>
+<div id="petInfoTable">
+  <table id="petsTable" class="table-bordered table-hover">
+  </table>
 </div>
   </body>
 </html>
