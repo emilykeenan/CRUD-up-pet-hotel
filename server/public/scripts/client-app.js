@@ -1,11 +1,26 @@
 $(document).ready(function(){
   console.log('jquery loaded');
-
+  $('#petInfoTable').on('click', '.deleteButton', deletePet);
   getPets();
-
-
 }); // end document ready
 
+
+function deletePet() {
+  var id = $(this).closest('tr').data('id');
+  console.log(id);
+
+  $.ajax({
+    type: 'DELETE',
+    url: '/pets/' + id,
+    success: function(result) {
+      //get pets from database and reappend
+      getPets();
+    },
+    error: function(result) {
+      console.log('could not delete pet.');
+    }
+  });
+}
 
 function getPets() {
   $.ajax({
@@ -39,9 +54,9 @@ function appendPets(pets) {
     } else {
       var status = 'IN';
     }
-
+    console.log(pet);
     $('#petsTable').append(
-      '<tr data-id="' + pet.pet_id + '">' +
+      '<tr data-id="' + pet.unique_pet + '">' +
       '<td>' + pet.first_name + ' ' + pet.last_name + '</td>' + // refers to owner's first and last name
       '<td>' + pet.name + '</td>' +
       '<td>' + pet.breed + '</td>' +

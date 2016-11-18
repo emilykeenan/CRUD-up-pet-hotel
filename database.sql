@@ -18,4 +18,3 @@ check_in DATE,
 check_out DATE,
 pet_id INTEGER REFERENCES pets
 );
-asdfafd

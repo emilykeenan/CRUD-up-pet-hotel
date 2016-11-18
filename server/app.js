@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var pets = require('./routes/pets');
+var pets = require('./routes/pets')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
