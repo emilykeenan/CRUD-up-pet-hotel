@@ -64,7 +64,6 @@ router.post('/', function (req, res) {
       console.log('Database connection error:', err);
       res.sendStatus(500);
     }
-
     client.query(
       'INSERT INTO pets (name, breed, color, owner_id)' +
       ' VALUES ($1, $2, $3, $4)',
