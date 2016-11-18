@@ -65,6 +65,12 @@ router.post('/', function (req, res) {
       res.sendStatus(500);
     }
     client.query(
+      'INSERT INTO visits (check_in, check_out, pet_id)' +
+      'VALUES ($1, $2, $3)',
+      [newPet.check_in, newPet.check_out, newPet.owner_id]
+    );
+
+    client.query(
       'INSERT INTO pets (name, breed, color, owner_id)' +
       ' VALUES ($1, $2, $3, $4)',
       [newPet.name, newPet.breed, newPet.color, newPet.owner_id],
