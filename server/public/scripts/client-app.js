@@ -95,9 +95,9 @@ function appendPets(pets) {
       '<td> <input type="text" name="name" value="' + pet.name + '"/></td>' +
       '<td> <input type="text" name="breed" value="' + pet.breed + '"/></td>' +
       '<td> <input type="text" name="color" value="' + pet.color + '"/></td>' +
-      '<td>' + '<button class="updateButton">Go</button>' + '</td>' +
-      '<td>' + '<button class="deleteButton">Delete</button>' + '</td>' +
-      '<td>' + '<button class="checkInOutButton">'+ status +'</button>' + '</td>' +
+      '<td>' + '<button class="updateButton btn btn-primary">Go</button>' + '</td>' +
+      '<td>' + '<button class="deleteButton btn btn-primary">Delete</button>' + '</td>' +
+      '<td>' + '<button class="checkInOutButton btn btn-primary">'+ status +'</button>' + '</td>' +
       '</tr>'
     );
 

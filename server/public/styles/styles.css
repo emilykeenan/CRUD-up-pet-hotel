@@ -15,6 +15,7 @@ h2 {
 
 td, th {
   padding: 10px;
+  text-align: center;
 }
 
 #petTableHead {
@@ -43,19 +44,14 @@ table {
   border: 1px solid black;
 }
 
-#ownerRegistration {
+#ownerRegistration, #petRegistration {
   background: hsla(0,0%,0%, 0.05);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  display: block;
+  text-align: center;
   padding: 20px;
+  margin: 0 auto;
   border-bottom: 1px solid hsla(0,0%,0%, 0.1);
-}
-
-#petRegistration {
-  background: hsla(0,0%,0%, 0.05);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 20px;
+  border-radius: 10px;
 }
 
 label {
@@ -72,10 +68,23 @@ label {
 input {
   display: block;
   margin: 5px 3px 3px 3px;
+  padding: 3px;
+}
+
+.checkInOutButton, .updateButton, .deleteButton {
+  background: hsla(0,0%,0%, 0.1);
+  color: black;
+  border: 1px solid hsla(0,0%,0%, 0.2);
+}
+
+.checkInOutButton:hover, .updateButton:hover, .deleteButton:hover {
+  background: hsla(0,0%,0%, 0.3);
+  border: 1px solid hsla(0,0%,0%, 0.3);
 }
 
 #addPetButton, #ownerRegButton {
-  margin: 30px 3px 3px 3px;
+  display: block;
+  margin: 30px auto 3px auto;
   background: hsla(312, 55.6%, 1.8%, 0.8);
   border: 1px solid hsla(312, 55.6%, 1.8%, 1);
 }
