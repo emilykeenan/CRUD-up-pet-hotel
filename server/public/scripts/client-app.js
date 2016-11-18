@@ -83,10 +83,22 @@ function appendPets(pets) {
     '</tr>');
   for (var i = 0; i < pets.length; i++) {
     var pet = pets[i];
+
+    // Before first check-in button says IN
     if(pet.check_in == null) {
-      var status = 'OUT';
-    } else {
       var status = 'IN';
+
+    // Else if before first check-out button says OUT
+    } else if(pet.check_out == null) {
+      status = 'OUT';
+
+    // Else the latest date determines the status
+    } else {
+      if(pet.check_in > pet.check_out) {
+        status = 'OUT';
+      } else {
+        status = 'IN';
+      }
     }
     //console.log(pet);
     $('#petsTable').append(
@@ -97,11 +109,9 @@ function appendPets(pets) {
       '<td> <input type="text" name="color" value="' + pet.color + '"/></td>' +
       '<td>' + '<button class="updateButton">Go</button>' + '</td>' +
       '<td>' + '<button class="deleteButton">Delete</button>' + '</td>' +
-      '<td>' + '<button class="checkInOutButton">'+ status +'</button>' + '</td>' +
+      '<td>' + '<button class="check-' + status.toLowerCase() + '">'+ status +'</button>' + '</td>' +
       '</tr>'
     );
-
-
   }
 }
 function newOwner() {
@@ -173,4 +183,9 @@ function addOwnersToSelect() {
       console.log(response);
     }
   });
+}
+
+
+function checkOut() {
+
 }
