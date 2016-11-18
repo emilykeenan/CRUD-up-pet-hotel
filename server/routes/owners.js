@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = 'postgres://localhost:5432/sigma';
+var connectionString = 'postgres://localhost:5432/omicron';
 
 
 router.post('/', function(req, res) {
