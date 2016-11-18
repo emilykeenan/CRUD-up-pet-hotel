@@ -91,9 +91,7 @@ function appendPets(pets) {
     //console.log(pet);
     $('#petsTable').append(
       '<tr data-id="' + pet.unique_pet + '"data-owner_id= "'+ pet.owner_id + '">' +
-      '<td> <input type="text" name="first_name" value=""' + pet.first_name
-      + '" /><input type="text" name="last_name" value="' + pet.last_name
-      +'"/>' +'</td>' + // refers to owner's first and last name
+      '<td>' + pet.first_name + ' ' + pet.last_name+ '</td>' + // refers to owner's first and last name
       '<td> <input type="text" name="name" value="' + pet.name + '"/></td>' +
       '<td> <input type="text" name="breed" value="' + pet.breed + '"/></td>' +
       '<td> <input type="text" name="color" value="' + pet.color + '"/></td>' +
