@@ -3,10 +3,41 @@ $(document).ready(function(){
   $('#petRegistration').on('submit', registerPet);
   $("#ownerRegButton").on('click', newOwner)
   $('#petInfoTable').on('click', '.deleteButton', deletePet);
+  $('#petInfoTable').on('click', '.updateButton', updatePet);
   getPets();
   addOwnersToSelect();
 }); // end document ready
 
+function updatePet(){
+  event.preventDefault;
+  var id= $(this).closest('tr').data('id');
+  console.log("id in update " + id);
+  var pets = {};
+  var fields = $(this).closest('tr').find("input").serializeArray();
+  fields.forEach(function(field){
+      pets[field.name] = field.value;
+    });
+   //console.log($(this).closest('tr').find("input").serializeArray());
+
+  //console.log($(this).parent().siblings());
+
+
+   console.log(pets);
+  $.ajax({
+    type: 'PUT',
+    url: '/pets/' + id,
+    data: pets,
+    success: function(result){
+      // get pets from database and reappend
+      getPets();
+    },
+    error: function(result) {
+      console.log("could not update pet.");
+    }
+  })
+
+
+}
 
 function deletePet() {
   var id = $(this).closest('tr').data('id');
@@ -52,25 +83,37 @@ function appendPets(pets) {
     '</tr>');
   for (var i = 0; i < pets.length; i++) {
     var pet = pets[i];
+
+    // Before first check-in button says IN
     if(pet.check_in == null) {
-      var status = 'OUT';
-    } else {
       var status = 'IN';
+
+    // Else if before first check-out button says OUT
+    } else if(pet.check_out == null) {
+      status = 'OUT';
+
+    // Else the latest date determines the status
+    } else {
+      if(pet.check_in > pet.check_out) {
+        status = 'OUT';
+      } else {
+        status = 'IN';
+      }
     }
-    console.log(pet);
+    //console.log(pet);
     $('#petsTable').append(
-      '<tr data-id="' + pet.unique_pet + '">' +
-      '<td>' + pet.first_name + ' ' + pet.last_name + '</td>' + // refers to owner's first and last name
-      '<td>' + pet.name + '</td>' +
-      '<td>' + pet.breed + '</td>' +
-      '<td>' + pet.color + '</td>' +
+      '<tr data-id="' + pet.unique_pet + '"data-owner_id= "'+ pet.owner_id + '">' +
+      '<td> <input type="text" name="first_name" value=""' + pet.first_name
+      + '" /><input type="text" name="last_name" value="' + pet.last_name
+      +'"/>' +'</td>' + // refers to owner's first and last name
+      '<td> <input type="text" name="name" value="' + pet.name + '"/></td>' +
+      '<td> <input type="text" name="breed" value="' + pet.breed + '"/></td>' +
+      '<td> <input type="text" name="color" value="' + pet.color + '"/></td>' +
       '<td>' + '<button class="updateButton">Go</button>' + '</td>' +
       '<td>' + '<button class="deleteButton">Delete</button>' + '</td>' +
-      '<td>' + '<button class="checkInOutButton">'+ status +'</button>' + '</td>' +
+      '<td>' + '<button class="check-' + status.toLowerCase() + '">'+ status +'</button>' + '</td>' +
       '</tr>'
     );
-
-
   }
 }
 function newOwner() {
@@ -142,4 +185,9 @@ function addOwnersToSelect() {
       console.log(response);
     }
   });
+}
+
+
+function checkOut() {
+
 }
