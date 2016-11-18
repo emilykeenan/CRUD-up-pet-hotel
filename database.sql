@@ -14,10 +14,11 @@ owner_id INTEGER REFERENCES owners
 
 CREATE TABLE visits (
 id SERIAL PRIMARY KEY,
-check_in DATE NOT NULL,
-check_out DATE NOT NULL,
+check_in DATE,
+check_out DATE,
 pet_id INTEGER REFERENCES pets
 );
+<<<<<<< HEAD
 
 -- 3. Joining Owner and Pet
 -- SELECT * FROM owners
@@ -30,3 +31,5 @@ pet_id INTEGER REFERENCES pets
 -- 	check_out date,
 -- 	pet_id int REFERENCES pets
 -- );
+=======
+>>>>>>> master
