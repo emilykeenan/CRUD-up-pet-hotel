@@ -66,7 +66,5 @@ function appendPets(pets) {
       '<td>' + '<button class="checkInOutButton">'+ status +'</button>' + '</td>' +
       '</tr>'
     );
-
-
   }
 }
