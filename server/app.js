@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var pets = require('../routes/pets');
+var owners = require('../routes/owners');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -12,6 +13,8 @@ app.get('/', function(req, res){
 });
 
 app.use('/pets', pets);
+
+app.use('/owners', owners);
 
 app.use(express.static('./server/public'));
 
