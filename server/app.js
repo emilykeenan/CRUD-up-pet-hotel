@@ -4,7 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var owners = require('./routes/owners');
 var pets = require('./routes/pets');
-var visits = require('./routers/visits');
+var visits = require('./routes/visits');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
