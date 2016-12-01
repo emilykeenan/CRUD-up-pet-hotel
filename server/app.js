@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
 app.use('/owners', owners);
-
 app.use('/pets', pets);
+app.use('/visits', visits);
 
 app.use('/visits', visits);
 

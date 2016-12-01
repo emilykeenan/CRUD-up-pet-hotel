@@ -6,6 +6,7 @@ $(document).ready(function(){
   $('#petInfoTable').on('click', '.updateButton', updatePet);
   // Check-in button
   $('#petInfoTable').on('click', '.check-in', checkIn);
+  $('#petInfoTable').on('click', '.check-out', checkOut);
   getPets();
   addOwnersToSelect();
 }); // end document ready
@@ -105,15 +106,13 @@ function appendPets(pets) {
     //console.log(pet);
     $('#petsTable').append(
       '<tr data-id="' + pet.unique_pet + '"data-owner_id= "'+ pet.owner_id + '">' +
-      '<td> <input type="text" name="first_name" value=""' + pet.first_name
-      + '" /><input type="text" name="last_name" value="' + pet.last_name
-      +'"/>' +'</td>' + // refers to owner's first and last name
+      '<td>' + pet.first_name + ' ' + pet.last_name+ '</td>' + // refers to owner's first and last name
       '<td> <input type="text" name="name" value="' + pet.name + '"/></td>' +
       '<td> <input type="text" name="breed" value="' + pet.breed + '"/></td>' +
       '<td> <input type="text" name="color" value="' + pet.color + '"/></td>' +
-      '<td>' + '<button class="updateButton">Go</button>' + '</td>' +
-      '<td>' + '<button class="deleteButton">Delete</button>' + '</td>' +
-      '<td>' + '<button class="check-' + status.toLowerCase() + '">'+ status +'</button>' + '</td>' +
+      '<td>' + '<button class="updateButton btn btn-primary">Go</button>' + '</td>' +
+      '<td>' + '<button class="deleteButton btn btn-primary">Delete</button>' + '</td>' +
+      '<td>' + '<button class="check-' + status.toLowerCase() + ' btn btn-primary">'+ status +'</button>' + '</td>' +
       '</tr>'
     );
   }
@@ -191,7 +190,21 @@ function addOwnersToSelect() {
 
 
 function checkOut() {
-
+  var id = $(this).closest('tr').data('id');
+  var date = new Date();
+  console.log(date.toLocaleDateString());
+  $.ajax({
+    type: 'PUT',
+    url: '/visits/out/' + id,
+    data: date.toLocaleDateString(),
+    success: function() {
+      console.log("Succefully checked out pet");
+      getPets();
+    },
+    error: function(response) {
+      console.log("failed to checkout pet ", response);
+    }
+  })
 }
 
 function checkIn() {
